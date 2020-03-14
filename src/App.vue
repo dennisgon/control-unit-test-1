@@ -19,7 +19,7 @@
           </div>
           <div class="form-group">
             <label for="description">description gambar</label>
-            <input type="text" v-model="desc" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="Enter description">
+            <textarea type="text" v-model="desc" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="Enter description"></textarea>
             <small id="descriptionHelp" class="form-text text-muted">description dari gambar yang akan disimpan</small>
           </div>
           <div class="form-group">
@@ -52,6 +52,9 @@
       'component-thumbnail': thumbnail,
       'big-component-thumbnail': thumbnailBig
     },
+    mounted:function(){
+      this.initialized() 
+    },
     methods:{
       addData(){
         let data={
@@ -69,6 +72,26 @@
         let b = this.datas[0];
         this.datas.splice(0,0, this.datas[index]);
         this.datas.splice(index+1,1);
+      },
+      initialized(){
+        let data={
+          "title": "Kompas Digital 3 Rubrik",
+          "desc": "Akses ke tiga rubrik favorit Anda (tidak termasuk ePaper).",
+          "image": "https://gerai-kompas-id.azureedge.net/wp-content/uploads/2018/11/paket-Kompas-digital-3rubrik-1-416x505.jpg"
+        }
+        this.datas.push(data);
+        let data1={
+          "title": "Kompas Digital Premium",
+          "desc": "Akses ke seluruh konten digital termasuk ePaper, tanpa batas.",
+          "image": "https://gerai-kompas-id.azureedge.net/wp-content/uploads/2018/11/Produk-Kompas-Digital-Premium-494x600-1-416x505.png"
+        }
+        this.datas.push(data1);
+        let data2={
+          "title": "Kompas Digital Premium & Koran",
+          "desc": "Akses ke seluruh konten digital, ePaper, dan Kompas cetak.",
+          "image": "https://gerai-kompas-id.azureedge.net/wp-content/uploads/2018/12/Produk-Kompas-Digital-Koran-494x600-416x505.png"
+        }
+        this.datas.push(data2);
       }
     }
   }
